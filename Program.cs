@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -8,30 +9,31 @@ using System.Threading.Tasks;
 namespace number_challenge
 {
     internal class Program
-    {static int[] numberbase(int number, int Base)
+    {static long[] numberbase(long number, int Base)
         {
-            int[] BinaryArray = new int[8];
-            for (int i = 7; i>=0; i--) 
+            ArrayList binarylist = new ArrayList();
+            long[] BinaryArray = new long[100]; //creates array with 8 charecters for numbers
+            for (int i = 99; i>=0; i--) // starts a look counting backwards from 7 to input last index first 
             {
-                Console.WriteLine(number);
-                BinaryArray[i] = number % Base;
-                Console.WriteLine(BinaryArray[i]);
-                number = (number/Base);
+                //Console.WriteLine(number);
+                BinaryArray[i] = number % Base; // calculates digit in convertion, starting at last index 
+                //Console.WriteLine(BinaryArray[i]);
+                number = (number/Base); //next number fro the next step 
             }
             return BinaryArray;
         }
         static void Main(string[] args)
         {
             Console.WriteLine("Enter the denary number you want to convert");
-            int DenaryNum = Convert.ToInt32(Console.ReadLine());
+            long DenaryNum = Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Enter the base of number system you want to convert the denary number to");
-            int BaseNum = Convert.ToInt32(Console.ReadLine());
-            int[] ConvertionArray = numberbase(DenaryNum,BaseNum);
-            for (int i= 0;i<=7;i++)
+            int BaseNum = Convert.ToInt16(Console.ReadLine());
+            long[] ConvertionArray = numberbase(DenaryNum,BaseNum); //passes users numbers into the function to be converted 
+            for (int i= 0;i<=99;i++) //loops through the array of the converted number
             {
-                Console.Write(ConvertionArray[i]);
+                Console.Write(ConvertionArray[i]); //prints elemets of the array one by one
             }
-            Console.WriteLine();
+            Console.WriteLine("");
         }
     }
 }
