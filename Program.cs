@@ -29,9 +29,17 @@ namespace number_challenge
             Console.WriteLine("Enter the base of number system you want to convert the denary number to");
             int BaseNum = Convert.ToInt16(Console.ReadLine());
             long[] ConvertionArray = numberbase(DenaryNum,BaseNum); //passes users numbers into the function to be converted 
+            bool NonLeading = false;
             for (int i= 0;i<=99;i++) //loops through the array of the converted number
             {
-                Console.Write(ConvertionArray[i]); //prints elemets of the array one by one
+                if (ConvertionArray[i] != 0)
+                {
+                    NonLeading = true;
+                }
+                if (NonLeading == true)
+                    {
+                    Console.Write(ConvertionArray[i]); //prints elemets of the array one by one
+                }
             }
             Console.WriteLine("");
         }
